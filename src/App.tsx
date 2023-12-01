@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import JSarticle from './components/JSarticle'
+import JSarticle from './components/jsArticles/JSarticle'
+import AddJsArticles from './components/addArticles/AddJsArticles'
 import './App.scss'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <>
     <JSarticle/>
+    <AddJsArticles/>
     </>
   )
 }
