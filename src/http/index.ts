@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const API_URL = 'http://31.129.109.140:3000/'
+export const API_URL = 'https://back.sandbook.ru:3000/'
 
 const $api = axios.create({
     withCredentials: true,
@@ -8,7 +8,7 @@ const $api = axios.create({
 })
 
 $api.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+    config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
     return config
 })
 

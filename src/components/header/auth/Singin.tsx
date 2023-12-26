@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styles from "./Auth.module.css";
 import { Context } from "../../../main";
+import {observer} from 'mobx-react-lite'
 
 const Singin: React.FC = () => {
   const { store } = useContext(Context);
@@ -28,4 +29,4 @@ const Singin: React.FC = () => {
   );
 };
 
-export default Singin;
+export default observer(Singin);

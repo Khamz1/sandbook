@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styles from "./Auth.module.css";
 import { Context } from "../../../main";
+import {observer} from "mobx-react-lite";
 
 const Singup: React.FC = () => {
   const { store } = useContext(Context);
@@ -44,4 +45,4 @@ const Singup: React.FC = () => {
   );
 };
 
-export default Singup;
+export default observer(Singup);
