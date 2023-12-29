@@ -3,7 +3,7 @@ import React from "react";
 import JavascriptIcon from "@mui/icons-material/Javascript";
 import ReactIcon from "../../assets/ReactIcon.svg";
 import CreateIcon from "@mui/icons-material/Create";
-// import HStyle from "../../styles/header.module.scss";
+import HStyle from "../../styles/header.module.scss";
 import Button from "@mui/material/Button";
 
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar className={HStyle.toolbar}>
         <IconButton sx={{ mr: 3, fontSize: 15 }}>
         <Link style={linkStyle} to={'/JsArticles'}>Javascript</Link>
           <JavascriptIcon />
@@ -25,7 +25,7 @@ function Header() {
           React
           <img src={ReactIcon} alt="img" />
         </IconButton>
-        <IconButton sx={{ mr: 3, fontSize: 15 }}>
+        <IconButton className={HStyle.AddArtcl} sx={{ mr: 3, fontSize: 15 }}>
           <Link style={linkStyle} to={"/addArticles"}>
             Добавить статью
           </Link>
