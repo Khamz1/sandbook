@@ -1,22 +1,11 @@
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-<BrowserRouter>
-    <App />
-    </BrowserRouter>
-    
- 
-)
-
 import { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
+// import "./index.css";
 import Store from "./store/store.ts";
+import { BrowserRouter } from "react-router-dom";
+
 
 interface IStore {
   store: Store;
@@ -29,8 +18,10 @@ export const Context = createContext<IStore>({
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
   <Context.Provider value={{ store }}>
     <App />
   </Context.Provider>
+  </BrowserRouter>
 );
 

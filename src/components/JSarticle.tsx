@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useArticles } from "../state/JSarticle.store";
 
 
@@ -11,6 +11,9 @@ function JSarticle() {
     fetchArticles: state.fetchArticles,
   }));
   
+  useEffect(()=>{
+    fetchArticles()
+  }, [])
 
   return (
     <div>
@@ -29,7 +32,7 @@ function JSarticle() {
         ) : (
           <p>Статьи пока не загужены</p>
         )}
-        <button onClick={fetchArticles}>Загрузить статьи</button>
+      
       </div>
       
     </div>

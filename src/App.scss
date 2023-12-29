@@ -1,11 +1,20 @@
 
 * {
-  // background-color: rgb(192, 11, 11);
-  color: rgb(0, 0, 0);
-  // padding: 5px;
+
   box-sizing: border-box;
   font-family: 'Source Code Pro', monospace;
 
+}
+
+button{
+  background: none;
+  border: 1px solid rgb(75, 75, 244);
+  border-radius: 5px;
+  color:rgb(75, 75, 244);
+  font-size: 15px;
+  font: bold;
+  cursor: pointer;
+  padding: 10px;
 }
  
 
@@ -17,6 +26,8 @@ html, body {
 }
 
 #root{
+
+  background-color: rgb(220, 248, 255);
   min-height: 100%;
   display: flex;
   flex-direction: column;

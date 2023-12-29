@@ -1,5 +1,20 @@
 import React, { useState } from "react";
 import { useArticles } from "../state/JSarticle.store";
+import {
+  Grid,
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  InputBase,
+  IconButton,
+  InputLabel,
+  Input,
+} from "@mui/material";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import { file } from "@babel/types";
+
+
 //  title, text, author, category
 function AddJsArticles() {
   const addArticles = useArticles((state) => state.addArticles);
@@ -9,9 +24,9 @@ function AddJsArticles() {
   const [author, setAuthor] = useState(1);
   const [category, setCategory] = useState(1);
 
-  const handleChangeCategory=(e)=>{
-    setCategory(e.target.value)
-  }
+  const handleChangeCategory = (e) => {
+    setCategory(e.target.value);
+  };
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -33,28 +48,67 @@ function AddJsArticles() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* <select value={category}  onChange={handleChangeCategory} name="Khamz">
-          <option value={1}>JS</option>
-          <option value={2}>VUE</option>
-          <option value={3}>REACT</option>
-        </select>
-        <input onChange={handleChangeFile} type="file" /> */}
-        <input
-          placeholder="Введите загловок"
-          type="text"
-          value={title}
-          onChange={handleChangeTitle}
-        />
-        {/* <input
-          placeholder="Введите текст"
-          type="text"
-          value={text}
-          onChange={handleChangeText}
-        /> */}
-        <button>Отправить</button>
+
+        <Grid container spacing={2} alignItems={"center"}>
+
+          <Grid item md={5}>
+            <Select
+              value={category}
+              onChange={handleChangeCategory}
+              name="Category"
+            >
+              <MenuItem value={1}>JavaScript</MenuItem>
+              <MenuItem value={2}>React JS</MenuItem>
+              <MenuItem value={3}>Vue 3</MenuItem>
+            </Select>
+          </Grid>
+         
+          <Grid item md={8}>
+            <TextField
+              style={{ width: "70%" }}
+              id="outlined-basic"
+              label="Заголовок"
+              variant="outlined"
+              value={title}
+              onChange={handleChangeTitle}
+            />
+          </Grid>
+
+
+          <Grid item md={8}>
+            <TextField
+              style={{ width: "70%" }}
+              id="outlined-basic"
+              label="Описание"
+              variant="outlined"
+              value={text}
+              onChange={handleChangeText}
+            />
+          </Grid>
+
+          <Grid item md={8}>
+            <label htmlFor="file-input">
+              <Input
+                type="file"
+                id="file-input"
+                onChange={handleChangeFile}
+                style={{ display: "none" }}
+              />
+              <Button variant="outlined" component="span">
+                Выберите файл
+              </Button>
+            </label>
+            <Button  sx={{ml:53}} variant="outlined">
+              Отправить
+            </Button>
+              </Grid>
+        </Grid>
       </form>
     </>
   );
 }
 
 export default AddJsArticles;
+
+
+
