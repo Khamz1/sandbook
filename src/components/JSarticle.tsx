@@ -1,6 +1,5 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useArticles } from "../state/JSarticle.store";
-
 
 function JSarticle() {
   const articles = useArticles((state) => state.articles);
@@ -10,31 +9,28 @@ function JSarticle() {
     error: state.error,
     fetchArticles: state.fetchArticles,
   }));
-  
-  useEffect(()=>{
-    fetchArticles()
-  }, [])
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
 
   return (
     <div>
-     
       <div>
-        {Array.isArray(articles) ? (
-          articles.map((item) => (
+        {Array.isArray(articles.rows) ? (
+          articles.rows.map((item) => (
             <div key={item.id}>
               {item.title}
-              {/* {item.text}
+              {item.text}
               {item.author}
-              <img src={item.url} alt="alt" /> */}
+              <img src={`https://back.sandbook.ru:3000/static/${item.image}`} alt="alt" />
+              {console.log(item.image, "IMAGE")}
             </div>
-            
           ))
         ) : (
           <p>Статьи пока не загужены</p>
         )}
-      
       </div>
-      
     </div>
   );
 }

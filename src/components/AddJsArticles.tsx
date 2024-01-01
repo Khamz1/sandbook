@@ -6,23 +6,18 @@ import {
   Button,
   Select,
   MenuItem,
-  InputBase,
-  IconButton,
-  InputLabel,
   Input,
 } from "@mui/material";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import { file } from "@babel/types";
-
 
 //  title, text, author, category
 function AddJsArticles() {
   const addArticles = useArticles((state) => state.addArticles);
+
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState([]);
   const [author, setAuthor] = useState(1);
-  const [category, setCategory] = useState(1);
+  const [category, setCategory] = useState('');
 
   const handleChangeCategory = (e) => {
     setCategory(e.target.value);
@@ -36,33 +31,34 @@ function AddJsArticles() {
   };
 
   const handleChangeFile = (e) => {
-    setImage(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setImage(selectedFile);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    addArticles(title);
+    console.log(category, "category")
+    addArticles(title, text, author, category, image);
     setText("");
     setTitle("");
-    setImage("");
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <Grid container spacing={2} alignItems={"center"}>
-
           <Grid item md={5}>
             <Select
               value={category}
               onChange={handleChangeCategory}
               name="Category"
             >
-              <MenuItem value={1}>JavaScript</MenuItem>
-              <MenuItem value={2}>React JS</MenuItem>
-              <MenuItem value={3}>Vue 3</MenuItem>
+              <MenuItem value={"JS"}>JS</MenuItem>
+              <MenuItem value={"VUE"}>VUE</MenuItem>
+              <MenuItem value={"REACT"}>REACT</MenuItem>
             </Select>
           </Grid>
-         
+
           <Grid item md={8}>
             <TextField
               style={{ width: "70%" }}
@@ -73,7 +69,6 @@ function AddJsArticles() {
               onChange={handleChangeTitle}
             />
           </Grid>
-
 
           <Grid item md={8}>
             <TextField
@@ -87,21 +82,15 @@ function AddJsArticles() {
           </Grid>
 
           <Grid item md={8}>
-            <label htmlFor="file-input">
-              <Input
-                type="file"
-                id="file-input"
-                onChange={handleChangeFile}
-                style={{ display: "none" }}
-              />
-              <Button variant="outlined" component="span">
-                Выберите файл
-              </Button>
-            </label>
-            <Button  sx={{ml:53}} variant="outlined">
+            <Input
+              type="file"
+              onChange={handleChangeFile}
+              inputProps={{ accept: "image/*" }} // Указывает, что можно загружать только изображения
+            />
+            <Button type="submit" sx={{ ml: 53 }} variant="outlined">
               Отправить
             </Button>
-              </Grid>
+          </Grid>
         </Grid>
       </form>
     </>
@@ -109,6 +98,3 @@ function AddJsArticles() {
 }
 
 export default AddJsArticles;
-
-
-
