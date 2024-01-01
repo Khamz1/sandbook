@@ -1,7 +1,7 @@
 import JSarticle from "./components/JSarticle";
 import AddJsArticles from "./components/AddJsArticles";
 import "./App.scss";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/common/Header.jsx";
 import Footer from "./components/common/Footer.jsx";
 import About from "./pages/About.jsx";
@@ -10,8 +10,9 @@ import { useContext, useEffect } from "react";
 import { Context } from "./main";
 import { observer } from "mobx-react-lite";
 import { Grid } from "@mui/material";
+import Article from "./pages/Article.tsx";
 
-function App() {
+function App():JSX.Element {
   const { store } = useContext(Context);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/addArticles" element={<AddJsArticles />} />
             <Route path="/JsArticles" element={<JSarticle />} />
           </Routes>
+        <Article/>
         </Grid>
         <Grid item>
           <Footer />
