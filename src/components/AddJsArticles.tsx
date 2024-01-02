@@ -17,7 +17,7 @@ function AddJsArticles() {
   const [text, setText] = useState("");
   const [image, setImage] = useState([]);
   const [author, setAuthor] = useState(1);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('JS');
 
   const handleChangeCategory = (e) => {
     setCategory(e.target.value);

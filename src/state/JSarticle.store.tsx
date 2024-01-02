@@ -30,11 +30,10 @@ export const useArticles = create(
       set({ loading: true });
 
       try {
-        const res = await fetch("https://back.sandbook.ru:3000/article");
+        const res = await fetch("https://back.sandbook.ru:3000/article/");
         if (!res.ok) throw new Error("failed to fetch");
         const articles = await res.json()
         set({ articles:articles, error: null });
-        console.log(articles,"KAAAAAAAAA")
       } catch (error) {
         set({ error: error.message });
       } finally {
