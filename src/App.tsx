@@ -2,7 +2,6 @@ import JSarticle from "./components/JSarticle";
 import AddJsArticles from "./components/AddJsArticles";
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/common/Header.jsx";
 import Footer from "./components/common/Footer.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -11,7 +10,7 @@ import { Context } from "./main";
 import { observer } from "mobx-react-lite";
 import { Grid } from "@mui/material";
 import Article from "./pages/Article.tsx";
-
+import Header from "./components/header/Header.tsx";
 function App():JSX.Element {
   const { store } = useContext(Context);
 
