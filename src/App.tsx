@@ -1,4 +1,5 @@
 import JSarticle from "./components/JSarticle";
+import ArticleCard from "./components/common/FullArticleCard.jsx"
 import AddJsArticles from "./components/AddJsArticles";
 import "./App.scss";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -10,6 +11,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "./main";
 import { observer } from "mobx-react-lite";
 import { Grid } from "@mui/material";
+import ArticlesPage from './pages/ArticlesPage.jsx'
 
 function App() {
   const { store } = useContext(Context);
@@ -30,7 +32,7 @@ function App() {
             <Route path="/contactUs" element={<Contact />} />
             <Route path="/aboutCreators" element={<About />} />
             <Route path="/addArticles" element={<AddJsArticles />} />
-            <Route path="/JsArticles" element={<JSarticle />} />
+            <Route path="/JsArticles" element={<ArticlesPage/>} />
           </Routes>
         </Grid>
         <Grid item>
